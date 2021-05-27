@@ -14,44 +14,55 @@
 
 from decimal import Decimal
 
-
+# Use entry_number as dictionary key for each entry - increment by one
+# after each entry confirmed.
+entry_number = 1
 
 print("Let's track your crypto purchases!")
 print("Enter 'q' at any time to quit.")
 
-# Ask for dollars spent in purchase (push decimal format)
+# Ask for dollars spent in purchase (force money format,
+# only numbers and 1 required decimal, limit to 14 characters (billions
+# plus cents)
 print("First, how much money did you spend on this crypto purchase?")
-p_dollar = Decimal(input("Dollar amount, including cents: "))
-print(p_dollar)
+purchase_dollar = Decimal(input("Dollar amount, including cents: "))
 
 # Record dollars spent in purchase
 
-#Ask what crypto was bought (push string format)
-p_crypto_name = input("What was the name of the crypto you bought? ")
+# Ask what crypto was bought (push string format for now, change to
+# multiple choice eventually to minimize errors when matching log
+# entries to live crypto feeds, max 20 characters for now)
+purchase_crypto_name = input("What was the name of the crypto you\
+ bought? ")
 
 #Record what crypto was bought
 
-# Ask for price of crypto at time of purchase (cover millions/ths)
-p_crypto_price = input(f"How much was one {p_crypto_name} worth when\
- you bought it? ")
+# Ask for price of crypto at time of purchase (numbers only, 1 decimal
+# required (pre-populate in web interface?), max 20 characters)
+purchase_crypto_price = input(f"How much was one\
+ {purchase_crypto_name} worth when you bought it? ")
 
 # Record price of crypto at time of purchase
 
-# Ask for amount of crypto obtained (after fees) (millions/ths)
-p_crypto_obtained = input(f"How much {p_crypto_name} did you own after\
- fees? ")
+# Ask for amount of crypto obtained (after fees, numbers only,
+# 1 decimal required, max 20 characters
+purchase_crypto_obtained = input(f"How much {purchase_crypto_name} did\
+ you own after fees? ")
 
 # Record amount of crypto obtained (after fees)
 
 # Ask for date purchased (determine adn push date format)
-p_crypto_date = input(f"What date did you purchase {p_crypto_name}? ")
+purchase_crypto_date = input(f"What date did you purchase\
+ {purchase_crypto_name}? ")
 
 # Record date purchased
 
-#Verify entry, push proper formats
-print(f"Let's make sure this is all correct. You spent {p_dollar}\
- dollars on {p_crypto_name} when one {p_crypto_name} was worth\
- {p_crypto_price} and own {p_crypto_obtained} {p_crypto_name}\
- as a result of this transcation?")
+# Verify entry, push proper format - if confirmation response is 'no'
+# then go back to beginning of loop or ask for element to correct.
+print(f"Let's make sure this is all correct. You spent\
+ {purchase_dollar} dollars on {purchase_crypto_name} when one\
+ {purchase_crypto_name} was worth {purchase_crypto_price} and\
+ own {purchase_crypto_obtained} {purchase_crypto_name} as a\
+ result of this transaction?")
 
  #After confirmation, record values
