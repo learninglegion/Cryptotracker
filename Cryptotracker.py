@@ -12,11 +12,34 @@
 #Stretch goals include multiple choice crypto selection in
 #order to use proper API to pull crypto value.
 
+import json
 from decimal import Decimal
+
+filename = 'cryptotracker_DB.json'
+test_dictionary = {'entry_number': 1, 'purchase_dollar': '200.00',\
+ 'purchase_crypto_name': 'BTC', 'purchase_crypto_price': '35000.00',\
+ 'purchase_crypto_obtained': '0.5', 'purchase_crypto_date': '5-27-21'}
 
 # Use entry_number as dictionary key for each entry - increment by one
 # after each entry confirmed.
-entry_number = 1
+
+try:
+    with open(filename) as f:
+        entry_number = json.load(f)
+except FileNotFoundError:
+    print("No CryptoTracker DB found.")
+else:
+    entry_number = 1
+    with open(filename, 'w') as f:
+        json.dump(entry_number, f)
+
+
+#Test entry save
+print(f"Entry number is {entry_number}.")
+
+
+#Initial test questions below
+
 
 print("Let's track your crypto purchases!")
 print("Enter 'q' at any time to quit.")
