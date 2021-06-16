@@ -20,6 +20,7 @@
 # Maybe change this process
 ledger_entry= {}
 
+#Next step, make entry a class?
 
 #Initial test questions below
 
@@ -29,6 +30,7 @@ def intro():
 
 intro()
 
+#Questions for variable generation - conjure better variables
 p_dollars = input("First, how much money did you spend on this crypto purchase? ")
 formatted_dollars = float(p_dollars)
 c_name = input("What was the name of the crypto you bought? ")
